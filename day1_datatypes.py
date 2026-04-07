@@ -59,7 +59,5 @@ person = {
     "age": 25,
     "city": "Newcastle"
 }
-print("Dictionary:", person, "| Type:", type(person))
-
-
+print("Dictionary:", person, "|     Tyoe:", type(person))
 
