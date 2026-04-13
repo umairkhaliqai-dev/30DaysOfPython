@@ -1,0 +1,24 @@
+print("=== SIMPLE QUIZ ===")
+print("What's 5 + 3?")
+answer = int(input("Your answer: "))
+if answer == 8:
+    print("Correct! 🎉")
+else:
+    print(f"Wrong! 5 + 3 = 8, not {answer} 😢")
+    print("=== TEST 1: Your way ===")
+name = "what is your name ?"
+print(name)
+print("The program continues without asking you anything!")
+
+print("\n=== TEST 2: Correct way ===")
+real_name = input("what is your name ? ")
+print(f"Hello {real_name}!")
+print("See? The program asked and you answered!")
+# Displaying instructions (no input needed)
+welcome = "Welcome to my program!"
+instruction = "This program calculates your age"
+print(welcome)
+print(instruction)
+
+# THEN ask for input
+name = input("What is your name? ")
