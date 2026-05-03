@@ -1,0 +1,24 @@
+# 1
+for i in range(5):
+    print(i)
+
+# 2
+message = "Hello, World!"
+print(message)
+
+# 3
+colors = ["red", "green", "blue"]
+print(colors[2])
+
+# 4 
+age = 25
+print("I am " + str(age) + " years old.")
+
+# 5
+def divide(a, b):
+    return a / b
+
+result = divide(10, 2)
+print(result)
+
+# So I have got cues of question with their error in them and I just have fixed and wrote here!
