@@ -129,11 +129,11 @@ class BlogPost:
             return f"{time_diff.seconds // 60} minutes ago"
     
     def display_post(self):
-        print(f"\n📝 Title: {self.title}")
-        print(f"👤 Author: {self.author}")
-        print(f"🕒 Posted: {self.get_time_since_posted()}")
-        print(f"📅 Created on: {self.created_at.strftime('%Y-%m-%d %H:%M:%S')}")
-        print(f"📄 Content: {self.content}")
+        print(f"\n Title: {self.title}")
+        print(f" Author: {self.author}")
+        print(f" Posted: {self.get_time_since_posted()}")
+        print(f" Created on: {self.created_at.strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f" Content: {self.content}")
 
 # Create a sample blog post
 my_post = BlogPost(
