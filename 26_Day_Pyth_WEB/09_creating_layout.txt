@@ -1,0 +1,202 @@
+# In the template files, there are lots of repeated codes, 
+we can write a layout and we can remove the repetition. 
+Let's create layout.html inside the templates folder. 
+After we create the layout we will import to every file.
+
+THE PROBLEM (Without Layout)
+
+Without layout.html, EVERY page needs ALL this:
+
+HOME.HTML:
+┌────────────────────────────────────┐
+│ <!DOCTYPE html>                    │
+│ <html>                             │
+│ <head>                             │
+│   <title>Home</title>              │
+│   <link rel="stylesheet" href="...">│
+│ </head>                            │
+│ <body>                             │
+│   <nav>Home | About | Contact</nav>│
+│   <h1>Welcome to Home!</h1>        │
+│   <footer>© 2024</footer>          │
+│ </body>                            │
+│ </html>                            │
+└────────────────────────────────────┘
+
+ABOUT.HTML (90% SAME CODE!):
+┌────────────────────────────────────┐
+│ <!DOCTYPE html>                    │
+│ <html>                             │
+│ <head>                             │
+│   <title>About</title>             │
+│   <link rel="stylesheet" href="...">│
+│ </head>                            │
+│ <body>                             │
+│   <nav>Home | About | Contact</nav>│
+│   <h1>About Us</h1>  ← ONLY THIS  │
+│   <footer>© 2024</footer>          │
+│ </body>                            │
+│ </html>                            │
+└────────────────────────────────────┘
+
+❌ PROBLEM: Change nav in 1 place → must change ALL files
+
+
+print()
+THE SOLUTION (With Layout)
+
+LAYOUT.HTML (Write ONCE):
+┌────────────────────────────────────────┐
+│ <!DOCTYPE html>                        │
+│ <html>                                 │
+│ <head>                                 │
+│   <title>My Site</title>               │
+│   <link rel="stylesheet" href="...">   │
+│ </head>                                │
+│ <body>                                 │
+│   <nav>Home | About | Contact</nav>    │
+│                                         │
+│   ╔════════════════════════════════╗   │
+│   ║  {% block content %}           ║   │
+│   ║       [EMPTY SPACE]            ║   │
+│   ║  {% endblock %}                ║   │
+│   ╚════════════════════════════════╝   │
+│                                         │
+│   <footer>© 2024</footer>              │
+│ </body>                                │
+│ </html>                                │
+└────────────────────────────────────────┘
+
+HOME.HTML (Just the UNIQUE part):
+┌────────────────────┐
+│ {% extends 'layout.html' %}  │
+│ {% block content %}           │
+│   <h1>Welcome to Home!</h1>   │
+│ {% endblock %}                │
+└────────────────────┘
+
+ABOUT.HTML (Just the UNIQUE part):
+┌────────────────────┐
+│ {% extends 'layout.html' %}  │
+│ {% block content %}           │
+│   <h1>About Us</h1>          │
+│ {% endblock %}                │
+└────────────────────┘
+
+✅ SOLUTION: Change nav in 1 place → ALL pages update!
+
+print()
+THE MERGING PROCESS (Visual)
+
+
+STEP 1: Flask reads HOME.HTML
+        ↓
+        "{% extends 'layout.html' %}" → "Go find layout.html"
+
+STEP 2: Flask reads LAYOUT.HTML
+        ↓
+        Finds "{% block content %}" → "This is where home.html goes"
+
+STEP 3: Flask MERGES them
+        ↓
+┌────────────────────────────────────────┐
+│ HOME.HTML says:                        │
+│ "Put '<h1>Welcome to Home!</h1>'       │
+│  into layout.html's block"             │
+└────────────────────────────────────────┘
+
+STEP 4: FINAL RESULT sent to browser:
+┌────────────────────────────────────────┐
+│ <!DOCTYPE html>                        │
+│ <html>                                 │
+│ <head>...                              │
+│ <body>                                 │
+│   <nav>Home | About | Contact</nav>    │
+│   <h1>Welcome to Home!</h1> ← INSERTED │
+│   <footer>© 2024</footer>              │
+│ </body>                                │
+│ </html>                                │
+└────────────────────────────────────────┘
+
+pritn()
+
+WHAT HAPPENS WHEN USER VISITS PAGE (GET)
+text
+USER ACTION:
+    Type URL: http://site.com/post
+              ↓
+         [Press Enter]
+              ↓
+
+BROWSER → FLASK:
+    "Hey Flask, I want page /post (GET request)"
+              ↓
+
+FLASK BRAIN:
+    @app.route('/post', methods=['GET', 'POST'])
+    def post():
+        if request.method == 'GET':  ← YES, this matches!
+            return render_template('post.html')
+              ↓
+
+FLASK → BROWSER:
+    "Here's the empty form HTML"
+              ↓
+
+USER SEES:
+    ┌─────────────────────────┐
+    │  [                    ] │ ← Empty text box
+    │  [ SUBMIT BUTTON ]      │
+    └─────────────────────────┘
+
+print()
+
+WHAT HAPPENS WHEN USER SUBMITS FORM (POST)
+text
+USER ACTION:
+    Types: "I love Python" in box
+    Clicks [SUBMIT BUTTON]
+              ↓
+
+BROWSER → FLASK:
+    "Hey Flask, here's data for /post (POST request)"
+    Data: content = "I love Python"
+              ↓
+
+FLASK BRAIN:
+    @app.route('/post', methods=['GET', 'POST'])
+    def post():
+        if request.method == 'GET': ← NO, not this
+        if request.method == 'POST': ← YES, this!
+            content = request.form['content']  # "I love Python"
+            return redirect(url_for('result'))
+              ↓
+
+FLASK → BROWSER:
+    "Go to the /result page instead"
+              ↓
+
+BROWSER → FLASK (NEW REQUEST):
+    "Hey Flask, I want page /result (GET request)"
+              ↓
+
+FLASK → BROWSER:
+    "Here's the result page showing: I love Python"
+              ↓
+
+USER SEES:
+    ┌─────────────────────────┐
+    │  You typed:             │
+    │  "I love Python"        │
+    └─────────────────────────┘
+print()
+
+1. {% extends %} = "Use this as my template"
+
+2. {% block content %} = "Put my unique stuff here"
+
+3. GET = "Just looking" (show form)
+
+4. POST = "Sending data" (process form)
+
+5. Everything else is just details!

@@ -1,0 +1,47 @@
+Heroku vs PythonAnywhere — Side by Side
+
+Heroku                      PythonAnywhere
+git init                    Not required
+git add .                   Not required
+git commit -m "message"     Not required
+heroku create appname       Create web app in Web tab
+git push heroku master      Upload files manually OR use git
+heroku open                 Visit umair007.pythonanywhere.com
+
+Way 2 — Using Git (Professional way)
+If your code is on GitHub, in PythonAnywhere Bash console:
+bash# Step 1 - Go to your home directory
+cd /home/Umair007/
+
+# Step 2 - Clone your GitHub repo
+git clone https://github.com/umairkhaliq/mysite.git
+
+# Step 3 - Go into the project
+cd mysite
+
+# Step 4 - Go to Web tab and configure paths
+# Source code: /home/Umair007/mysite/flask_app.py
+# Working directory: /home/Umair007/mysite/
+
+# Step 5 - Click Reload on Web tab
+
+# Step 6 - Visit your site
+# umair007.pythonanywhere.com
+
+Way 3 — Update existing site (When you make changes)
+bash# If you edited files directly on PythonAnywhere:
+# Just click Reload on Web tab — done!
+
+# If you're using GitHub and made changes locally:
+cd /home/Umair007/mysite
+git pull origin main    # pulls latest changes from GitHub
+# Then click Reload on Web tab
+
+The Big Picture
+Heroku way:
+Local code → Git → Push to Heroku → Live
+
+PythonAnywhere way:
+Local code → GitHub → Pull on PythonAnywhere → Live
+     OR
+Write code directly on PythonAnywhere → Reload → Live ✅

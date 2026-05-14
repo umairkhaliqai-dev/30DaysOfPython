@@ -1,0 +1,14 @@
+I logged into the heroku with my specific required details but as 
+the course is 3 to 4 years old so at that time 
+Heoku was free for student use but now the heroku is not free any mmore 
+and charges amount in subscription mode. 
+So i have already decided to practice PythonAnywhere and have a 
+good experience on it 
+
+print()
+
+                 $$ PythonAnywhere                  $$ Heroku
+Free             Yes,completely free            Requires payment
+Easy             Very easy                      Moderate
+Flask support    Built in                    Needs extra setup
+My site        Almost working!             Starting from scratch

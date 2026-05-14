@@ -1,0 +1,19 @@
+For Deploying my basic website that I created I used PythonAnywhere.
+This helped me to undertsand the logic of how to paste the code that 
+i wrote in my VS code strtegically in the PyhtonAnywhere by making 
+directory for mysite, templates and static and input relative files 
+in style.css and as about.html, home.html, layoyut.html & contact.html.code 
+This also let me now about an issue that was a barrier in my site to get 
+run over the browser and it was that the source code group was reading a 
+dfault code of flask to show on the browser and this was treated in making 
+some changes in source code group and in the console too. 
+then it gave me a real result showing my site live in real . 
+#### This PythoAnywhere i tried was for a free tier maybe run 
+     for a month for mysite. 
+
+Print()
+$$$ Now I will Learn about the Deployment from Asabeneh's Course. $$$
+
+Creating Heroku account
+Heroku provides a free deployment service for both front end and fullstack applications. Create an account on heroku and install the heroku CLI for you machine. After installing heroku write the following command
+

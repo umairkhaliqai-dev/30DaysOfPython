@@ -1,0 +1,4 @@
+mkdir python_for_web && cd python_for_web
+virtualenv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
+pip install Flask

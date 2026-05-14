@@ -1,0 +1,53 @@
+After completing all the step, your project file structure should look like this:
+
+├── Procfile
+├── app.py
+├── env
+│   ├── bin
+├── requirements.txt
+├── static
+│   └── css
+│       └── main.css
+└── templates
+    ├── about.html
+    ├── home.html
+    ├── layout.html
+    ├── post.html
+    └── result.html
+
+    Heroku = 
+    A cloud platform where you can deploy your web app without managing servers.
+
+Heroku is a Platform as a Service (PaaS)  -
+ it handles all the infrastructure so you just focus on code
+
+ Simple Analogy 🏠
+Traditional hosting = Buying land, building a house, maintaining it yourself
+
+Heroku = Renting an apartment - just move in and live, everything else is managed
+
+How it Works
+You write code (Python/Flask, Node.js, Ruby, etc.) 
+
+You push to Heroku using git push heroku main 
+
+Heroku automatically builds and runs your app in containers called "dynos" 
+
+Why Developers Use Heroku
+No server management - No configuring Linux, Nginx, or SSH
+
+Simple deployment - Just git push 
+
+Scaling - Increase app capacity with one command: heroku ps:scale web=3 
+
+Add-ons - Easy to add databases (PostgreSQL, Redis) 
+
+Key Files for Heroku Deployment
+File	Purpose
+requirements.txt	Python packages needed
+Procfile	Tells Heroku how to run your app (e.g., web: python app.py)
+runtime.txt	Python version to use
+
+Heroku lets you go from local code → live website in minutes with just git push.
+ Perfect for beginners who don't want to learn server administration.
+

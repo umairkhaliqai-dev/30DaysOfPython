@@ -1,0 +1,23 @@
+$ What is requirements.txt?
+# It's a file that lists all the Python packages your project needs to run.
+# Think of it like a shopping list for Python:
+Flask==1.1.1
+gunicorn==20.1.0
+Jinja2==2.10.3
+# When you deploy to a server, that server has no packages installed. It reads requirements.txt and installs everything your app needs automatically.
+$ What is Procfile?
+# It tells the server how to start/run your website:
+web: python app.py
+# Basically it says "to start this website, run this command".
+
+$$ # PythonAnywhere doesn't need either file because:
+
+> It already has Flask pre-installed
+> It uses the WSGI file instead of Procfile to run your app
+> You configure everything through the Web tab dashboard
+
+Heroku workflow:
+Code → requirements.txt → Procfile → Push to Heroku → Live
+
+PythonAnywhere workflow:
+Code → Upload files → Configure Web tab → Reload → Live 

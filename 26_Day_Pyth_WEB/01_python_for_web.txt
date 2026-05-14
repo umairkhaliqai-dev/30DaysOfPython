@@ -1,0 +1,4 @@
+Def: Python runs on a server, generates HTML dynamically.
+
+Example: Flask, Django.
+

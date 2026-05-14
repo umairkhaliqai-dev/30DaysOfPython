@@ -1,0 +1,89 @@
+<a href="/">Home</a>
+<a href="/about">About</a>
+
+my_app/
+├── app.py
+└── templates/
+    ├── layout.html      ← shared navigation
+    ├── home.html        ← extends layout
+    └── profile.html     ← extends layout
+
+
+    from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    user = "Alex"
+    skills = ["Python", "Flask", "JavaScript"]
+    return render_template('home.html', 
+                         username=user, 
+                         skills=skills,
+                         page_title="Home")
+
+@app.route('/profile')
+def profile():
+    user = "Alex"
+    age = 25
+    city = "London"
+    return render_template('profile.html',
+                         username=user,
+                         age=age,
+                         city=city,
+                         page_title="Profile")
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+print()
+Jinja2 is a tool that lets you write Python-like code inside HTML files to make them dynamic.
+
+for example :
+with no jinja : 
+<h1>Welcome to John's page</h1>
+<ul>
+  <li>Python</li>
+  <li>Flask</li>
+</ul>
+
+with jinja2 HTML FILE IS: 
+<h1>Welcome to {{ username }}'s page</h1>
+<ul>
+  {% for skill in skills %}
+    <li>{{ skill }}</li>
+  {% endfor %}
+</ul>
+
+What Jinja2 Does (3 Things Only)
+#	What it does	Symbol	Example
+1	Insert values	{{ }}	{{ name }} → "Alex"
+2	Loops	{% for %}	{% for item in list %}
+3	If statements	{% if %}	{% if age > 18 %}
+Real-World Analogy
+Mail merge in Word:
+
+Word document = HTML template
+
+{{ customer_name }} = placeholder
+
+Mail merge = Jinja2 filling in real names
+
+HTML without Jinja2 = Printed photo (can't change)
+HTML with Jinja2 = Digital frame (content changes automatically)
+
+Bottom Line
+Jinja2 = HTML that can think — it replaces placeholders, runs loops, and makes decisions, just like Python does.
+
+
+Tag	Meaning	Purpose
+<ul>	Unordered List	Creates a bullet-point list
+<li>	List Item	Each individual item in the list
+<a href="/">	Anchor (Link)	Makes text clickable to navigate
+Home	Link text	What users see and click
+
+ul = "I'm making a bullet-point list"
+li = "Here's one bullet point"
+<a> = "Make this text clickable"
+
+Result: Navigation menu with clickable links to Home and About pages.

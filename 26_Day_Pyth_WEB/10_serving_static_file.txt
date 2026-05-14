@@ -1,0 +1,5 @@
+Definition: Serving CSS, JS, images from static/ folder using /static/ URL.
+Example:
+
+html
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
