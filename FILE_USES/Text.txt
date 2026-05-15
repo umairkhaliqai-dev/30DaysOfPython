@@ -1,0 +1,13 @@
+A .txt file is a plain text file that contains unformatted text.  
+It is one of the simplest and most widely supported file formats, used to
+ store readable content like notes, instructions, logs, or configuration data. 
+ These files contain no formatting such as bold, italics, fonts, or colors—only
+  plain characters. 
+
+They can be opened and edited with basic text editors like Notepad (Windows), 
+TextEdit (macOS), or code editors like VS Code. 
+
+
+Hello, this is a plain text file.
+It contains no formatting.
+This is useful for storing simple data or notes.   
