@@ -1,0 +1,21 @@
+
+
+1. Go to the folder:
+
+bash
+cd ~/Python.pyFile-01-04-26/27_Day_MongoDB
+2. Activate myenv:
+
+bash
+source ../myenv/bin/activate
+3. Run Flask:
+
+bash
+python 04_connecting_flask_to_mongodb.py
+4. Open browser and visit:
+
+http://127.0.0.1:5000/
+http://127.0.0.1:5000/students
+5. When done, stop Flask:
+
+Ctrl + C
